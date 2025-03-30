@@ -3,7 +3,7 @@ import React from "react";
 function MbtiProfile({data}) {
   console.log(data);
   const circleStyle = {
-    background: `conic-gradient(black ${data.developerPercentage * 3.6}deg, #e0e0e0 0deg)`,
+    background: `conic-gradient(${data.color} ${data.developerPercentage * 3.6}deg, #e0e0e0 0deg)`,
   };
 
   return (
@@ -18,7 +18,7 @@ function MbtiProfile({data}) {
           style={circleStyle}
         >
           <div className="w-28 h-28 bg-white rounded-full absolute flex items-center justify-center">
-            <p className="text-2xl font-bold" style={{ color: "black" }}>
+            <p className="text-2xl font-bold" style={{ color: data.color }}>
               <span className="text-base">{data.type} 비율</span>
               <br />
               {data.developerPercentage}%
@@ -27,7 +27,16 @@ function MbtiProfile({data}) {
         </div>
 
         <div className="flex flex-wrap justify-center gap-2">
-          <span
+          {data.tags.map((v, i)=>(
+            <span
+            key={i}
+            style={{ backgroundColor: `#eee` }}
+            className="px-4 py-1.5 rounded-full text-sm font-medium"
+            >
+              {v}
+            </span>
+          ))}
+          {/* <span
             style={{ backgroundColor: `#eee` }}
             className="px-4 py-1.5 rounded-full text-sm font-medium"
           >
@@ -50,7 +59,7 @@ function MbtiProfile({data}) {
             className="px-4 py-1.5 rounded-full text-sm font-medium"
           >
             {data.tags[3]}
-          </span>
+          </span> */}
         </div>
       </div>
       <h2 className="text-[40rem] font-bold text-[#eee] mb-4 absolute top-0 left-1/2 -translate-x-1/2 -z-10">
