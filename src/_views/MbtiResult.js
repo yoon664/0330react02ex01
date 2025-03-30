@@ -43,8 +43,9 @@ function MbtiResult({name, mbti}) {
         }
         
       </div>
-
-      <MbtiProfile />
+      {
+          mbtiData ? <MbtiProfile data={mbtiData} /> : <p>데이터 불러오는중...</p>
+      }
     </div>
   );
 }
